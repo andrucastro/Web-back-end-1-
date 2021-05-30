@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-sacale=1.0>">
-        <title>Classic</title>
-        <link rel="stylesheet" type="text/css" href="/phpmotors/css/style.css?1.0">
+        <title>>Add Classification</title>
+        <link rel="stylesheet" type="text/css" href="/phpmotors/css/style.css?">
         <link rel="stylesheet" type="text/css" href="/phpmotors/css/large_view.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Montserrat:wght@100&family=Zen+Dots&display=swap" rel="stylesheet">
@@ -12,30 +12,26 @@
 <body>
     <div class="blue_border_Main_container">
         <header>
-        <?php 
-            require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/Snippets/header.php'; 
-            ?>
             <nav>
                 <?php 
-                echo $navList;
+                    require_once $_SERVER['DOCUMENT_ROOT'] .'/phpmotors/Snippets/header.php'; 
+                    echo $navList;
                 ?>
-            </nav>
+            </nav>   
         </header>
         <main>
-            <h1>Sing in</h1>
+            <h1>Add Car Classification</h1>
             <?php
-                if (isset($message)) {
-                echo $message;
-                }
-            ?> 
-            <form>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Passwrod">
-                <button>Sing-in</button>
+            if (isset($message)) {
+            echo $message;
+            }
+            ?>
+            <form action="/phpmotors/vehicles/index.php" method="POST">
+            <label for="addClassField"> Classification Name</label>
+            <input type="text" id="addClassField" name="classificationName">
+            <input type="submit" name="submit" id="addCarClassification" value="Add Classification">
+            <input type="hidden" name="action" value="addClassification">
             </form>
-            <a href="/phpmotors/accounts/?action=registration">Not a member yet?</a>
         </main>
         <footer>
             <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/Snippets/footer.php'; ?> 

@@ -26,8 +26,8 @@ switch ($action){
     include 'view/login.php';
     break;
 
-    case 'register':
-      include 'view/register.php';
+    case 'registration':
+      include 'view/registration.php';
       break;
    
    default:

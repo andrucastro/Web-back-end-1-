@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-sacale=1.0>">
-        <title>Classic</title>
+        <title>Vehicle</title>
         <link rel="stylesheet" type="text/css" href="/phpmotors/css/style.css?1.0">
         <link rel="stylesheet" type="text/css" href="/phpmotors/css/large_view.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,20 +22,16 @@
             </nav>
         </header>
         <main>
-            <h1>Sing in</h1>
+        <h1>Vehicle Data Management</h1>
             <?php
                 if (isset($message)) {
                 echo $message;
                 }
             ?> 
-            <form>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Passwrod">
-                <button>Sing-in</button>
-            </form>
-            <a href="/phpmotors/accounts/?action=registration">Not a member yet?</a>
+            <ul class="veicle_man_ul">
+                <li><a href="/phpmotors/vehicles/?action=add-classification">Add Classification</a></li>
+                <li><a href="/phpmotors/vehicles/?action=add-vehicle">Add Vehicle</a></li>
+            </ul>
         </main>
         <footer>
             <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/Snippets/footer.php'; ?> 
