@@ -30,15 +30,16 @@
         ?>
         <form action="/phpmotors/accounts/index.php" method="post">
             <label for="fName">First Name</label>
-            <input type="text" name="clientFirstname" id="fName" placeholder="First name">
+            <input type="text" name="clientFirstname" id="fName" placeholder="First name" <?php if(isset($clientFirstname)){echo "value='$clientFirstname'";} ?> required>
             <label for="lName">Last Name</label>
-            <input type="text" name="clientLastname" id="lName" placeholder="Last Name">
+            <input type="text" name="clientLastname" id="lName" placeholder="Last Name" <?php if(isset($clientLastname)){echo "value='$clientLastname'";} ?> required>
             <label for="email">Email</label>
-            <input type="email" name="clientEmail" id="email" placeholder="Email">
-            <label for="password">Password must at least 8 characters and contain at least 1 number. 1 capital letter and 1 speacial chareacter</label>
-            <input type="password" name="clientPassword" id="password" placeholder="Show Password">
+            <input type="email" name="clientEmail" id="email" placeholder="Email" <?php if(isset($clientEmail)){echo "value='$clientEmail'";} ?> required>
+            <label for="password">Password</label>
+            <span class="password_insturctions"> Password must at least 8 characters and contain at least 1 number. 1 capital letter and 1 speacial chareacter</span> 
+            <input type="password" name="clientPassword" id="password" placeholder="Show Password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
             <button class="btn_show_password">Show Password</button>
-            <input type="submit" name="submit" id="regbtn" value="Register" class="btn_register"></input>
+            <input type="submit" name="submit" id="regbtn" value="Register" class="btn_register">
             <input type="hidden" name="action" value="register">
         </form>
     </main>

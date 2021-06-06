@@ -28,8 +28,8 @@
             ?>
             <form action="/phpmotors/vehicles/index.php" method="POST">
             <label for="addClassField"> Classification Name</label>
-            <input type="text" id="addClassField" name="classificationName">
-            <input type="submit" name="submit" id="addCarClassification" value="Add Classification">
+            <input type="text" id="addClassField" name="classificationName" required>
+            <input type="submit" name="submit" id="addCarClassification" value="Add Classification" >
             <input type="hidden" name="action" value="addClassification">
             </form>
         </main>

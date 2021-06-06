@@ -30,10 +30,12 @@
             ?> 
             <form>
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email">
+                <input type="email" name="email" id="email" placeholder="Email" <?php if(isset($clientEmail)){echo "value='$clientEmail'";} ?> required>
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Passwrod">
-                <button>Sing-in</button>
+                <input type="password" name="password" id="password" placeholder="Passwrod" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                <span class="password_insturctions"> Password must at least 8 characters and contain at least 1 number. 1 capital letter and 1 speacial chareacter</span> 
+                <input type="submit" name="submit"  value="Sing-in" class="sing-in_btn">
+                <input type="hidden" name="action" value="Login">
             </form>
             <a href="/phpmotors/accounts/?action=registration">Not a member yet?</a>
         </main>
