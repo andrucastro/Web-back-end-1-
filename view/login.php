@@ -24,15 +24,18 @@
         <main>
             <h1>Sing in</h1>
             <?php
-                if (isset($message)) {
+               if (isset($_SESSION['message'])) {
+                echo $_SESSION['message'];
+               }
+               if (isset($message)) {
                 echo $message;
                 }
             ?> 
-            <form>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email" <?php if(isset($clientEmail)){echo "value='$clientEmail'";} ?> required>
+            <form method="post" action="/phpmotors/accounts/">
+                <label for="clientEmail">Email</label>
+                <input type="email" name="clientEmail" id="email" placeholder="Email" <?php if(isset($clientEmail)){echo "value='$clientEmail'";} ?> required>
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Passwrod" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                <input type="password" name="clientPassword" id="password" placeholder="Password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
                 <span class="password_insturctions"> Password must at least 8 characters and contain at least 1 number. 1 capital letter and 1 speacial chareacter</span> 
                 <input type="submit" name="submit"  value="Sing-in" class="sing-in_btn">
                 <input type="hidden" name="action" value="Login">

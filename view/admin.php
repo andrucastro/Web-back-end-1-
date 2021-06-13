@@ -1,16 +1,15 @@
 <?php   
-if (isset($_SESSION['loggedin'])){
-    $clientLevel =  $_SESSION['clientData']['clientLevel'];
-    if($clientLevel <= 1){
+if(!$_SESSION['loggedin']){
     header('Location: /phpmotors/index.php');
-    }
 }
+
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-sacale=1.0>">
-        <title>Vehicle</title>
+        <title>Classic</title>
         <link rel="stylesheet" type="text/css" href="/phpmotors/css/style.css?1.0">
         <link rel="stylesheet" type="text/css" href="/phpmotors/css/large_view.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -29,16 +28,21 @@ if (isset($_SESSION['loggedin'])){
             </nav>
         </header>
         <main>
-        <h1>Vehicle Data Management</h1>
-            <?php
-                if (isset($message)) {
-                echo $message;
-                }
-            ?> 
-            <ul class="veicle_man_ul">
-                <li><a href="/phpmotors/vehicles/?action=add-classification">Add Classification</a></li>
-                <li><a href="/phpmotors/vehicles/?action=add-vehicle">Add Vehicle</a></li>
-            </ul>
+        <h1><?php echo $_SESSION['clientData']['clientFirstname']; ?></h1>
+        <p>You Are logged in</p>
+        <ul class="admin_page_client_info">
+            <li> Frist Name: <?php echo $_SESSION['clientData']['clientFirstname'];?> </li>
+            <li> Last Name: <?php echo $_SESSION['clientData']['clientLastname']; ?></li>
+            <li> Email: <?php echo $_SESSION['clientData']['clientEmail']; ?> </li>
+            <li> CLient Level: <?php echo  $_SESSION['clientData']['clientLevel']; ?> </li>
+        </ul>
+        <?php
+        $clientLevel =  $_SESSION['clientData']['clientLevel'];
+        if ($clientLevel>1){
+       echo "<a href='/phpmotors/vehicles/'> You have access to the Vehicles controler</a>";   
+        }
+        ?>
+    
         </main>
         <footer>
             <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/Snippets/footer.php'; ?> 

@@ -1,3 +1,11 @@
+<?php   
+if (isset($_SESSION['loggedin'])){
+    $clientLevel =  $_SESSION['clientData']['clientLevel'];
+    if($clientLevel <= 1){
+    header('Location: /phpmotors/index.php');
+    }
+}
+?>
 <?php
 
 // Build a dropdown Menu for car clasifications 

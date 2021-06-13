@@ -292,6 +292,13 @@ margin-left: 2em;
 }
 
 
+/*------------------ADMIN PAGE PAGE-----------------------*/
+
+.admin_page_client_info{
+    margin: 2em 1em;
+    list-style: none;
+}
+
 /*------------------------ FOOTER ---------------------------*/
 
 footer{

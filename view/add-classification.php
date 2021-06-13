@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php   
+if (isset($_SESSION['loggedin'])){
+    $clientLevel =  $_SESSION['clientData']['clientLevel'];
+    if($clientLevel <= 1){
+    header('Location: /phpmotors/index.php');
+    }
+}
+?><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
