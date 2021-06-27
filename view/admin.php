@@ -2,8 +2,9 @@
 if(!$_SESSION['loggedin']){
     header('Location: /phpmotors/index.php');
 }
-
-
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+}
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,15 +31,24 @@ if(!$_SESSION['loggedin']){
         <main>
         <h1><?php echo $_SESSION['clientData']['clientFirstname']; ?></h1>
         <p>You Are logged in</p>
+        <?php 
+            if (isset($message)) { 
+            echo $message; 
+            }
+        ?>
         <ul class="admin_page_client_info">
             <li> Frist Name: <?php echo $_SESSION['clientData']['clientFirstname'];?> </li>
             <li> Last Name: <?php echo $_SESSION['clientData']['clientLastname']; ?></li>
             <li> Email: <?php echo $_SESSION['clientData']['clientEmail']; ?> </li>
-            <li> CLient Level: <?php echo  $_SESSION['clientData']['clientLevel']; ?> </li>
-        </ul>
+        </ul>    
+            <h2>Account Managment</h2>
+            <p>Use this link to update and account information</p>
+            <a href='/phpmotors/accounts/?action=update'>Update  Accoount Information</a>
         <?php
         $clientLevel =  $_SESSION['clientData']['clientLevel'];
         if ($clientLevel>1){
+       echo "<h2>Inventory Managment</h2>";
+       echo "<p>Use this link to mange the inventory</p>";      
        echo "<a href='/phpmotors/vehicles/'> You have access to the Vehicles controler</a>";   
         }
         ?>
@@ -50,3 +60,4 @@ if(!$_SESSION['loggedin']){
     </div>
 </body>
 </html>
+<?php unset($_SESSION['message']);?>

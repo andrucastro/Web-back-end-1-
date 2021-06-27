@@ -59,4 +59,48 @@ function getClient($clientEmail){
     return $clientData;
    }
 
+   
+   //Update Client fuction
+function updateClient($clientFirstname, $clientLastname, $clientEmail, $clientId){
+   $db = phpmotorsConnect();
+   $sql = 'UPDATE clients SET clientFirstname = :clientFirstname, clientLastname = :clientLastname, clientEmail = :clientEmail WHERE clientId = :clientId';
+   $stmt = $db->prepare($sql);
+   $stmt->bindValue(':clientFirstname', $clientFirstname, PDO::PARAM_STR);
+   $stmt->bindValue(':clientLastname', $clientLastname, PDO::PARAM_STR);
+   $stmt->bindValue(':clientEmail', $clientEmail, PDO::PARAM_STR);
+   $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);  
+   $stmt->execute();
+   $rowsChanged = $stmt->rowCount();
+   $stmt->closeCursor();
+   return $rowsChanged;
+  }
+
+   
+   //Update password fuction
+function updatePassword($clientPassword,$clientId){
+    $db = phpmotorsConnect();
+    $sql = 'UPDATE clients SET clientPassword = :clientPassword WHERE clientId = :clientId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
+    $stmt->bindValue(':clientPassword', $clientPassword, PDO::PARAM_STR);
+    $stmt->execute();
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $rowsChanged;
+   }
+
+     // Get client data based on an cleint ID 
+function getClientId($clientId){
+    $db = phpmotorsConnect();
+    $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientId = :clientId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_STR);
+    $stmt->execute();
+    $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $clientData;
+   }
+
+
+
 ?>
