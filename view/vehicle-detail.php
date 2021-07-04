@@ -23,9 +23,19 @@
         </header>
         <main>
             <div id="vehicle-detail-container"> 
+                 <div id="thumbnails-large-view">
+                    <?php
+                    echo $displayThumbnails;
+                    ?>
+                 </div>
                 <?php 
                     echo $vehiclesDisplayInfo;
                 ?>
+                <div id="thumbnails-small-view">
+                    <?php
+                    echo $displayThumbnails;
+                    ?>
+                </div>
             </div>
         </main>
         <footer>

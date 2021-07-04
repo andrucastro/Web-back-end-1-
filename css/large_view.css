@@ -12,7 +12,7 @@ font-size: 16px;
 h1 { font-size: 2em; }
 h2 { font-size: 1.5em; }
 h3 { font-size: 1.17em; }
-
+    
 
 .blue_border_Main_container{
     width: 95%;
@@ -100,13 +100,31 @@ form input{
     width: 100%;
 }
 
+/*------------------VEHICLES UPLOAD Display-----------------------*/
+
+#image-display{
+   display: flex;
+   flex-flow: row wrap;
+}
+
+#image-display li{
+    width: 300px;
+    border: 1px solid gray;
+    margin: 1em;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+#image-display li:hover {
+    transform: scale(1.1);
+    }
 
 /*------------------VEHICLES DETAILED DISPLAY-----------------------*/
 
 
 #vehicle-detail-container{
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 10% 50% 40%;
 }
 
 #vehicle-detail-container div{
@@ -121,5 +139,33 @@ form input{
     width: 28%;
     margin:0;
 }
+
+#thumbnails-small-view{
+    display: none;
+}
+
+#thumbnails-large-view{
+    display: block ;
+}
+
+.inv-thum{
+    display:flex;
+    flex-direction: column;
+}
+
+.inv-thum li{ 
+    transition: all 0.2s ease-in-out;
+}
+
+.inv-thum li:hover {
+    transform: scale(1.4);
+    }
+
+
+
+
+
+
+
 
 }

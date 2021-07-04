@@ -9,8 +9,11 @@ require_once '../library/connections.php';
 require_once '../model/main-model.php';
 // Get the vehicles 
 require_once '../model/vehicles-model.php';
+// Get img Uploads
+require_once '../model/uploads-model.php';
 // Get validation functions
 require_once '../library/functions.php';
+
 
 $classifications = getClassifications();
 
@@ -187,11 +190,16 @@ switch ($action){
   //build vechile deteiled view 
   case 'vehicle-detail':
     $invId = filter_input(INPUT_GET, 'invId',  FILTER_VALIDATE_INT);
-    $vehicleInfo = getInvItemInfo($invId);
+    $vehicleInfo = getVehiclesInfoDetail($invId);
+    $vehicleThumbnails = getVehiclesImgThumbnails($invId);
+   
     if(!count($vehicleInfo)){
       $message = 'Sorry, no vehicle information could be found.';
     }else{
+
+    $displayThumbnails= buildThumbnails($vehicleThumbnails);
     $vehiclesDisplayInfo = vehiclesDisplayInfo($vehicleInfo);
+
     }
     include '../view/vehicle-detail.php';
   break;  
