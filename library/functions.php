@@ -258,4 +258,46 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
     imagedestroy($old_image);
   } // ends resizeImage function
 
+
+
+
+  
+  /* * ********************************
+*         Reviews Functions 
+* ********************************* */
+
+function displayReviews($reviews){
+$reviewConatainer="<ul id='reviews'>";
+foreach($reviews as $blocks){ 
+$reviewConatainer.='<li>';
+// take first character from first name
+$clientName = substr($blocks['clientFirstname'], 0,1);
+// transform to uppercase 
+$clientName = strtoupper($clientName);
+// transform fist character from Lastname to uppercase 
+$clientLasname = ucfirst($blocks['clientLastname']);
+$userReviewName = $clientName.$clientLasname;
+
+//Simplify date 
+$date = substr($blocks['reviewDate'],0,10);
+
+$reviewConatainer.="<p><span>$userReviewName</span> wrote on $date</p>";
+$reviewConatainer.="<p class='reviewText'>$blocks[reviewText]</p>";
+$reviewConatainer.='</li>';
+}
+
+$reviewConatainer.='</ul>';
+return $reviewConatainer;
+} 
+
+// Display reviwes manaement veiw 
+function reviewsMangment($userReviews){
+$rc = "<ul>";
+foreach ($userReviews as $review){
+$date = substr($review['reviewDate'],0,10);
+$rc .="<li> $review[invMake] $review[invModel] $date <a href='/phpmotors/reviews/?action=update-review&reviewId=".urlencode($review['reviewId'])."'>Edit</a> | <a href='/phpmotors/reviews/?action=delete-review&reviewId=".urlencode($review['reviewId'])."'>Delete</a> </li>"; 
+}
+$rc .= '</ul>';
+return $rc;
+}
 ?>

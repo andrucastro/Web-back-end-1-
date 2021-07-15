@@ -14,12 +14,23 @@ require_once '../model/main-model.php';
 require_once '../model/accounts-model.php';
 // Get validation functions
 require_once '../library/functions.php';
+// Get the reviews
+require_once '../model/reviews-model.php';
 
 $classifications = getClassifications();
 
 // Display the Menu
 $navList= dynamicMenu($classifications);
- 
+
+
+// Display reviews in the management view
+if(isset($_SESSION['clientData'])){
+$clientId = $_SESSION['clientData']['clientId'];
+$userReviews = getReviewsByCleintId($clientId);
+
+$managementReview = reviewsMangment($userReviews);
+}
+
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL){
@@ -110,6 +121,10 @@ switch ($action){
       // Store the array into the session
       $_SESSION['clientData'] = $clientData;
       // Send them to the admin view
+
+      $clientId = $_SESSION['clientData']['clientId'];
+      $userReviews = getReviewsByCleintId($clientId);
+      $managementReview = reviewsMangment($userReviews);
       include '../view/admin.php';
       exit;
   break;

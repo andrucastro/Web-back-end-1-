@@ -41,9 +41,16 @@ if (isset($_SESSION['message'])) {
             <li> Last Name: <?php echo $_SESSION['clientData']['clientLastname']; ?></li>
             <li> Email: <?php echo $_SESSION['clientData']['clientEmail']; ?> </li>
         </ul>    
-            <h2>Account Managment</h2>
-            <p>Use this link to update and account information</p>
-            <a href='/phpmotors/accounts/?action=update'>Update  Accoount Information</a>
+        <h2>Account Managment</h2>
+        <p>Use this link to update and account information</p>
+        <a href='/phpmotors/accounts/?action=update'>Update  Accoount Information</a>
+        <hr>    
+        <h2>Reviews Managment</h2>
+        <?php
+        if(isset($managementReview)){
+        echo  $managementReview;
+        }
+        ?>
         <?php
         $clientLevel =  $_SESSION['clientData']['clientLevel'];
         if ($clientLevel>1){

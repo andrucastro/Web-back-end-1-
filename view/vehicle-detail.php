@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+   }
+   
+?><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -36,6 +41,53 @@
                     echo $displayThumbnails;
                     ?>
                 </div>
+            </div>
+            <hr>
+            <div id= reviews-container>
+            <?php
+             if (!isset($_SESSION['loggedin'])){
+
+             echo "<h2>Customer review</h2>
+                  <p>You must <a href='/phpmotors/accounts/?action=login'>login</a> to wirte a review.</p>";
+              }else{  
+
+             echo '<h3>Review The Vehicle name</h3>'; 
+             // Get customer First letter from first Name and full Last name
+             $clientName = substr($_SESSION['clientData']['clientFirstname'], 0,1);
+             $clientName = strtoupper($clientName);
+             $clientLasname = ucfirst($_SESSION['clientData']['clientLastname']);
+             $clientId = $_SESSION['clientData']['clientId'];
+            
+             //Client Alert Message in case success or fail
+            if (isset($message)) { 
+                echo $message; 
+                }
+
+             echo " <form action='/phpmotors/reviews/index.php' method='post' id='review-form'>
+                    <label for='screenName'>Screen Name:</label>
+                    <input type='text' name='screenName' id='screenName' readonly value='$clientName$clientLasname'>
+                    <label for='reviewTexts'>Review</label>
+                    <textarea required id='reviewTexts' name='reviewText' rows='6'></textarea>
+                    <input type='submit' name='submit' value='Submit Review'> 
+                    <input type='hidden' name='action' value='submitReview'>
+                    <input type='hidden' name='invId' value='$invId'>
+                    <input type='hidden' name='clientId' value='$clientId'>  
+                   </form>";
+              }
+            ?>
+            </div>
+            <div>
+                <?php
+                    //count the number of reviews brought from the DB
+                    if(isset($reviews)){
+                     $reviewsCount = count($reviews);
+                    if($reviewsCount == 0){
+                          echo "<p>Be the first to write a review</p>";
+                    }else{
+                        echo $displayReviews;
+                    }            
+                }
+                ?>
             </div>
         </main>
         <footer>

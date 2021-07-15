@@ -279,6 +279,12 @@ input:required:valid {
 border: 1px solid rgb(48, 248, 48);
 }
 
+textarea:required:invalid, input:focus:invalid {
+border: 2px solid rgb(247, 57, 57);
+    }
+textarea:required:valid {
+border: 1px solid rgb(48, 248, 48);
+}
 
 /*REGISTRATION-PAGE LOG ING PAGE*/
 .btn_show_password{
@@ -296,6 +302,38 @@ border: 1px solid rgb(48, 248, 48);
     display: block;
     margin-top: 0.5em;
 }
+
+
+
+/*REVIEWS FORMS STILES */
+
+#review-form{
+border: #3a3a3a 1px solid;
+padding:1em;
+background-color:#ccc;
+}
+
+#review-form textarea{
+width: 100%;
+}
+#review-form input{
+width: 150px;
+}
+
+/*FORMS reviews STILES */
+
+.formTextarea input{ 
+width:200px;
+}
+
+.formTextarea label{ 
+font-weight: bold;    
+}
+
+.formTextarea textarea{ 
+width: 60%;    
+}
+
 
 /*------------------VEHICLE MANAGEMENT PAGE-----------------------*/
 
@@ -395,6 +433,27 @@ padding: 0.5em;
 .inv-thum  img{
     width: 100%;
     }
+
+/****** Reviews ******/
+
+#reviews li{
+
+    background-color: rgb(111, 161, 218);
+    padding: 1em;
+    margin: 1em;
+
+}
+
+#reviews li p span{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#reviews .reviewText{
+    background-color: white;
+    padding: 0.5em;
+    border-radius: 10px;
+}
 
 /*------------------VEHICLES UPLOAD Display-----------------------*/
 

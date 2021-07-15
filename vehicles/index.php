@@ -7,6 +7,8 @@ session_start();
 require_once '../library/connections.php';
 // Get the PHP Motors model for use as needed
 require_once '../model/main-model.php';
+// Get the reviews
+require_once '../model/reviews-model.php';
 // Get the vehicles 
 require_once '../model/vehicles-model.php';
 // Get img Uploads
@@ -192,15 +194,22 @@ switch ($action){
     $invId = filter_input(INPUT_GET, 'invId',  FILTER_VALIDATE_INT);
     $vehicleInfo = getVehiclesInfoDetail($invId);
     $vehicleThumbnails = getVehiclesImgThumbnails($invId);
+    //get reviews by id
+    $reviews = getReviewsById($invId);
    
     if(!count($vehicleInfo)){
       $message = 'Sorry, no vehicle information could be found.';
     }else{
 
+    // add thumnails in the vehicle detail page   
     $displayThumbnails= buildThumbnails($vehicleThumbnails);
+    // add car mode detiles info
     $vehiclesDisplayInfo = vehiclesDisplayInfo($vehicleInfo);
+    // add all the reviews in the vehicle detail page 
+    $displayReviews = displayReviews($reviews);    
 
     }
+
     include '../view/vehicle-detail.php';
   break;  
                                                                                                                                                                                                                                                                  
